@@ -10,27 +10,31 @@ use Illuminate\Database\Seeder;
 
 class InitialSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+   
     public function run()
     {
+       // Create Dining Areas
         $indoor = DiningArea::create(['name' => 'Indoor']);
         $outdoor = DiningArea::create(['name' => 'Outdoor']);
         $outdoorTerrace = DiningArea::create(['name' => 'Outdoor Terrace']);
 
+        // Create Green Restaurant and associate dining areas
         $greenRestaurant = Restaurant::create(['name' => 'Green Restaurant']);
         $greenRestaurant->diningAreas()->attach([$indoor->id, $outdoor->id]);
 
+        // Create Blue Restaurant and associate dining areas
         $blueRestaurant = Restaurant::create(['name' => 'Blue Restaurant']);
         $blueRestaurant->diningAreas()->attach([$indoor->id, $outdoorTerrace->id]);
 
-        // Green Restaurant tables
-        for ($i = 1; $i <= 4; $i++) {
+        // Custom table names for Green Restaurant
+        $greenIndoorTableNames = ['Emerald Garden Table', 'Jade Pavilion Table', 'Mint Blossom Table', 'Verdant Oasis Table'];
+        $greenIndoorInactiveTableNames = ['Sage Sanctuary Table', 'Olive Grove Table'];
+        $greenOutdoorTableNames = ['Forest Canopy Table', 'Pine Retreat Table', 'Mossy Meadow Table', 'Cedar Haven Table', 'Fern Glade Table'];
+
+        // Create Tables for Green Restaurant (Indoor)
+        foreach ($greenIndoorTableNames as $tableName) {
             Table::create([
-                'name' => "Table $i", 
+                'name' => $tableName, 
                 'minimum_capacity' => 2, 
                 'maximum_capacity' => 4, 
                 'active' => true, 
@@ -39,9 +43,9 @@ class InitialSeeder extends Seeder
             ]);
         }
 
-        for ($i = 1; $i <= 2; $i++) {
+        foreach ($greenIndoorInactiveTableNames as $tableName) {
             Table::create([
-                'name' => "Table $i", 
+                'name' => $tableName, 
                 'minimum_capacity' => 3, 
                 'maximum_capacity' => 5, 
                 'active' => false, 
@@ -50,9 +54,10 @@ class InitialSeeder extends Seeder
             ]);
         }
 
-        for ($i = 1; $i <= 5; $i++) {
+        // Create Tables for Green Restaurant (Outdoor)
+        foreach ($greenOutdoorTableNames as $tableName) {
             Table::create([
-                'name' => "Table $i", 
+                'name' => $tableName, 
                 'minimum_capacity' => 3, 
                 'maximum_capacity' => 5, 
                 'active' => true, 
@@ -61,10 +66,14 @@ class InitialSeeder extends Seeder
             ]);
         }
 
-        // Blue Restaurant tables
-        for ($i = 1; $i <= 2; $i++) {
+        // Custom table names for Blue Restaurant
+        $blueIndoorTableNames = ['Sapphire Lounge Table', 'Azure Bay Table'];
+        $blueOutdoorTerraceTableNames = ['Sky Terrace Table', 'Ocean Breeze Table'];
+
+        // Create Tables for Blue Restaurant (Indoor)
+        foreach ($blueIndoorTableNames as $tableName) {
             Table::create([
-                'name' => "Table $i", 
+                'name' => $tableName, 
                 'minimum_capacity' => 1, 
                 'maximum_capacity' => 2, 
                 'active' => true, 
@@ -73,9 +82,10 @@ class InitialSeeder extends Seeder
             ]);
         }
 
-        for ($i = 1; $i <= 2; $i++) {
+        // Create Tables for Blue Restaurant (Outdoor Terrace)
+        foreach ($blueOutdoorTerraceTableNames as $tableName) {
             Table::create([
-                'name' => "Table $i", 
+                'name' => $tableName, 
                 'minimum_capacity' => 3, 
                 'maximum_capacity' => 5, 
                 'active' => true, 
