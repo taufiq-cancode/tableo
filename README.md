@@ -13,24 +13,24 @@ This README provides step-by-step instructions to set up and test the applicatio
 
 ### If you are cloning from a Git repository:
 ```bash
-git clone https://github.com/table.git
-cd your-repository
+git clone https://github.com/taufiq-cancode/tableo.git
+cd tableo
 ```
 ## Step 2: Install Dependencies
-- Run 
+- Run the command:
 ``` bash
 composer install
 ``` 
 to install dependencies needed by the application
 
 ## Step 3: Setup .env file
-- Rename the .env.example file to .env or simply run the command 
+- Rename the .env.example file to .env or simply run the command:
 ``` bash 
 cp .env.example .env
 ```
 
 ## Step 4: Generate the application key
-- Run the command 
+- Run the command: 
 ``` bash
 php artisan key:generate
 ``` 
@@ -39,6 +39,14 @@ to generate the application key
 ## Step 5: Configure the database
 - Create a database on your system
 - Open the .env file and update the database configuration to match your setup:
+```bash
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=your_database
+DB_USERNAME=your_database_username
+DB_PASSWORD=your_database_password
+```
 
 ## Step 6: Run Migrations and Seeders
 - Run the database migrations to create the tables: 
@@ -53,14 +61,14 @@ php artisan db:seed --class=InitialSeeder
 ```
 
 ## Step 8: Serve the Application
-- Serve the application using the built-in PHP server:
+- Serve the application using the built-in PHP server
 ``` bash 
 php artisan serve
 ```
 
 ## Usage:
-- You can now access your application at http://localhost:8000 or you.
-- Navigate through the application to list restaurants, view tables, and create new tables.
+- You can now access your application at http://localhost:8000 or your localhost address.
+- Navigate through the application to list restaurants, view tables, view active tables and create new tables.
 
 ## Conclusion
 You have successfully set up and tested the Laravel application.
