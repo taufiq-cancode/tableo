@@ -67,7 +67,7 @@ php artisan serve
 ```
 
 ## Usage:
-- You can now access your application at http://localhost:8000 or you.
+- You can now access your application at http://localhost:8000 or your localhost address.
 - Navigate through the application to list restaurants, view tables, view active tables and create new tables.
 
 ## Conclusion
